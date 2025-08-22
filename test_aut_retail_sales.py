@@ -29,3 +29,8 @@ def test_valid_day_week():
 # QC007
 def test_valid_holiday_boolean():
     assert sales_automated['holiday_effect'].isin([True, False]).all(), "Invalid holiday_effect"
+
+# QC008
+def test_unique_combination():
+    subset_col =  ['store_id', 'product_id', 'date']
+    assert sales_automated.reset_index().duplicated(subset=subset_col).sum() == 0, f"Existe rows duplicated in {subset_col}"

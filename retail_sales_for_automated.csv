@@ -1,4 +1,4 @@
-Store ID,product_id,date,units_sold,sales_revenue_usd,discount_percentage,marketing_spend_usd,store_location,product_category,day_of_week,holiday_effect
+store_id,product_id,date,units_sold,sales_revenue_usd,discount_percentage,marketing_spend_usd,store_location,product_category,day_of_week,holiday_effect
 Spearsland,52372247,2022-01-01,9,2741.69,20,81,Tanzania,Furniture,Saturday,False
 Spearsland,52372247,2022-01-02,7,2665.53,0,0,Mauritania,Furniture,Sunday,False
 Spearsland,52372247,2022-01-03,1,380.79,0,0,Saint Pierre and Miquelon,Furniture,Monday,False
