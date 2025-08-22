@@ -10,3 +10,9 @@ def test_missing_values():
     assert sales_automated['product_id'].notnull().all(), f"Null Values: product_id"
     assert sales_automated['date'].notnull().all(), f"Null Values: sales_automated"
     assert sales_automated['sales_revenue_usd'].notnull().all(), f"Null Values: sales_revenue_usd"
+
+
+# QC002 - QC003 - QC005 
+@pytest.mark.parametrize("column", ['units_sold', 'sales_revenue_usd', 'marketing_spend_usd'])
+def test_non_negative(column):
+    assert (sales_automated[column] >= 0).all(), f"Exist values < 0 en {column}"
