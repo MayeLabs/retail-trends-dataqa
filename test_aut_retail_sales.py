@@ -34,3 +34,8 @@ def test_valid_holiday_boolean():
 def test_unique_combination():
     subset_col =  ['store_id', 'product_id', 'date']
     assert sales_automated.reset_index().duplicated(subset=subset_col).sum() == 0, f"Existe rows duplicated in {subset_col}"
+
+# QC009
+def test_notnull_notempty():
+    invalid = sales_automated['store_location'].isnull() | (sales_automated['store_location'].str.strip() == '')
+    assert not invalid.any(), "There is null or empty"
