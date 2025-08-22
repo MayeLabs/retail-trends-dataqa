@@ -15,4 +15,9 @@ def test_missing_values():
 # QC002 - QC003 - QC005 
 @pytest.mark.parametrize("column", ['units_sold', 'sales_revenue_usd', 'marketing_spend_usd'])
 def test_non_negative(column):
-    assert (sales_automated[column] >= 0).all(), f"Exist values < 0 en {column}"
+    assert (sales_automated[column] >= 0).all(), f"Exist values < 0 in {column}"
+
+# QC004
+@pytest.mark.parametrize("column", ['discount_percentage'])
+def test_range_percentage():
+    assert(sales_automated[column] >= 0 and sales_automated[column] <= 100).all(), f"Percentage Invalid in {column}"
