@@ -26,4 +26,6 @@ def test_range_percentage(column):
 def test_valid_day_week():
     valid_day = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     assert sales_automated['day_of_week'].str.lower().isin(valid_day).all(), "Day of week invalid"
-
+# QC007
+def test_valid_holiday_boolean():
+    assert sales_automated['holiday_effect'].isin([True, False]).all(), "Invalid holiday_effect"
