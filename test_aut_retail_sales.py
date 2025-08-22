@@ -39,3 +39,19 @@ def test_unique_combination():
 def test_notnull_notempty():
     invalid = sales_automated['store_location'].isnull() | (sales_automated['store_location'].str.strip() == '')
     assert not invalid.any(), "There is null or empty"
+
+# QC010
+def test_notnull_valid():
+
+    valid_categories = ['Furniture','Electronics','Clothing','Toys','Food']
+    categories_in_df = sales_automated['product_category'].unique()
+    categories_serie = pd.Series(categories_in_df)
+
+    valid = categories_serie.isin(valid_categories).all()
+
+    if not valid:
+        invalid = categories_serie[~categories_serie.isin(valid_categories)]
+
+
+    assert sales_automated['product_category'].notnull().all(), "There are null in product_category"
+    assert valid, f"Exist invalid categories {invalid.tolist()}"
