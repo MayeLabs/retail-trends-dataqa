@@ -22,3 +22,8 @@ def test_non_negative(column):
 def test_range_percentage(column):
     assert sales_automated[column].between(0,100).all(), f"Percentage Invalid in {column}"
 
+# QC006
+def test_valid_day_week():
+    valid_day = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    assert sales_automated['day_of_week'].str.lower().isin(valid_day).all(), "Day of week invalid"
+
