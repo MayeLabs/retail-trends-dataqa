@@ -20,5 +20,5 @@ def test_non_negative(column):
 # QC004
 @pytest.mark.parametrize("column", ['discount_percentage'])
 def test_range_percentage(column):
-    assert(sales_automated[column] >= 0 and sales_automated[column] <= 100).all(), f"Percentage Invalid in {column}"
+    assert sales_automated[column].between(0,100).all(), f"Percentage Invalid in {column}"
 
